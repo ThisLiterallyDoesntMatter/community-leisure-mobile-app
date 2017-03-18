@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sports</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/latest/jquery.mobile.min.css" />
+    <script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+    <link rel="stylesheet" href="leisureapp.css">
+    <script src="JS/leisureapp.js"></script>
+    <script src="JS/rss-reader.js"></script>
+    <script src="JS/jgfeed.js"></script>
+    <script src="JS/subject_list.js"></script>
+</head>
+<body>
+
+
+<div data-role="dialog" id="home">
+    <div data-role="header" data-add-back-btn="true">
+        <h1>Log In</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+        Username:<br>
+        <input type="text" name="firstname" value="">
+        <br>
+        Password:<br>
+        <input type="password" name="lastname" value="">
+        <br>
+        <li><a id="log in" href="#log_in" data-transition="fade">Log In</a> </li>
+
+     </div>
+</div>
+
+
+
+<div data-role="page" id="log_in">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#log_in" data-role="button" data-icon="home" data-theme="a" >Home</a>
+        <a href="#home" data-role="button" data-icon="alert" data-theme="a" >Log-In</a>
+    </div>
+    <!--<h2 align="middle">Community Leisure App</h2>-->
+    <div data-role="content" data-theme="a">
+        <h1 align="middle">Community Leisure App</h1>
+            <ul data-role="listview" data-inset="true" data-theme="b">
+                <li><a href="#sports" id="sport" data-transition="fade">Sports</a> </li>
+                <li><a href="#meet-up" id="meetup" data-transition="fade">Meet-Ups</a> </li>
+                <li><a href="#event" id="events" data-transition="fade">Events</a> </li>
+                <li><a href="#news" id="newsFeed" data-transition="fade">News</a> </li>
+            </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" class="ui-bar" data-theme="a">
+        <div><ul>
+            <div align="right">
+            </div>
+            <li><a href="#panel" data-role="button" data-icon="info" class="ui-btn-left">About</a></li>
+        </ul></div>
+    </div>
+
+    <div id="panel" data-role="panel">
+        <p>Community Leisure App</p>
+        <p>Fully customisable mobile application giving user the ability to store information about their local area.</p>
+        <p>Post anything varying from Sports, Meet-Ups, Events and even News in the area!</p>
+        <br><br><br><br><br><br><br>
+        <p>This application was developed by: <br> &copy; M. Chaudhry, S. Stewart & A.Williams, UWS </p>
+    </div>
+
+</div>
+
+
+<div data-role="page" id="sports">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="sports_list"></h1>
+        <a href="#log_in" data-role="button" data-icon="home" data-theme="a">Home</a>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2 align="middle">Sport</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b    ">
+                <li><a id=Football href="#foot-ball" data-transition="fade"   >Football</a> </li>
+                <li><a id="Cricket_list" href="#cricket" data-transition="fade"  >Cricket</a> </li>
+                <li><a id="Field Hockey" href="#field-hockey" data-transition="fade"  >Field Hockey</a> </li>
+                <li><a id="Tennis_list" href="#tennis" data-transition="fade"  >Tennis</a> </li>
+                <li><a id=Volleybal_list href="#volleyball" data-transition="fade"   >Volleyball</a> </li>
+                <li><a id="Table Tennis" href="#table-tennis" data-transition="fade"  >Table Tennis</a> </li>
+                <li><a id="Baseball_list" href="#baseball" data-transition="fade"  >Baseball</a> </li>
+                <li><a id="Golf-list" href="#golf" data-transition="fade"  >Golf</a> </li>
+                <li><a id="Basketball-list" href="#basketball" data-transition="fade"  >Basketball</a> </li>
+                <li><a id="American Football-list" href="#american-football" data-transition="fade"  >American Football</a> </li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-role="footer" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Sport</a>
+    </div>
+
+</div>
+
+
+<div data-role="page" id="meet-up">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="meet up"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>meet ups</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="event">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="Event list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>Events</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="news">
+    <div data-role="header">
+        <h1 id="newsTitle">News (from Sky News)</h1>
+    </div>
+
+    <div data-role="content">
+        <ul id="newsList" data-role="listview">
+        </ul>
+    </div>
+</div>
+
+<!--<div data-role="page" id="news">
+    <div data-role="header">
+        <h1 id = newsTitle>News (from Sky)</h1>
+    </div>
+
+    <div data-role="content">
+        <ul data-role="listview" id="newsList" data-inset="true">
+        </ul>
+    </div>
+
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="News List"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>News</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>-->
+
+
+<div data-role="page" id="foot-ball">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="foot_ball"></h1>
+        <a href="#log_in" data-role="button" data-icon="home" data-theme="a">Home</a>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2 align="middle">Football</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+                <li>Team 1 vs Team 2 for 2pm Kick-Off, Monday @ The Pitch</li>
+                <li>Team 1 vs Team 3 for 2pm Kick-Off, Tuesday @ The Pitch</li>
+                <li>Team 2 vs Team 3 for 2pm Kick-Off, Wednesday @ The Pitch</li>
+                <li>Team 4 vs Team 5 for 2pm Kick-Off, Thursday @ The Pitch</li>
+                <li>Team 4 vs Team 6 for 2pm Kick-Off, Friday @ The Pitch</li>
+                <li>Team 5 vs Team 6 for 2pm Kick-Off, Saturday @ The Pitch</li>
+                <li>Team 1 vs Team 6 for 2pm Kick-Off, Sunday @ The Pitch</li>
+            </ul>
+        </div>
+    </div>
+
+    <div data-role="footer" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+
+</div>
+
+<div data-role="page" id="cricket">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="cricket list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>Cricket</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="field-hockey">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="Field_hockey"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>Field hockey</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<div data-role="page" id="tennis">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="Tennis list "></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>tennis</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="volleyball">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="volleyball-list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>volleyball</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="table-tennis">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="table_tennis"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>table tennis</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div data-role="page" id="baseball">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="baseball-list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>baseball</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="golf">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="golf_list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>golf</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="basketball">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="basketball_list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>basketball</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div data-role="page" id="american-football">
+    <div data-role="header" data-add-back-btn="true">
+        <h1 id="american football_list"></h1>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" >Back</a>
+    </div>
+    <h2>american football</h2>
+    <div data-role="content" data-theme="a">
+        <div data-role="content">
+            <ul data-role="listview" data-inset="true" data-theme="b">
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
