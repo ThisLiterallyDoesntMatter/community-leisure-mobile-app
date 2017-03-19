@@ -20,10 +20,12 @@
 -------------------LOG-IN----------------------
 ---------------------------------------------->
 
-<div data-role="page" id="login">
+<div data-role="page" id="login">.
+
     <div data-role="header" data-add-back-btn="true">
         <h1 align="middle"> Log In</h1>
     </div>
+
     <div data-role="content">
         <ul data-role="listview" data-inset="true" data-theme="b">
             Email:<br>
@@ -46,12 +48,11 @@
 <div data-role="page" id="home">
     <div data-role="header" data-add-back-btn="true">
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
-        <h1 align="middle">Home Page</h1>
+        <h1 align="middle">Community App</h1>
         <a href="#login" data-role="button" data-icon="alert" data-theme="a">Log In</a>
     </div>
 
-    <div data-role="content" data-theme="a">
-        <h1 align="middle">Community Leisure App</h1>
+    <div data-role="content" align="middle" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
             <li><a href="#sports" id="btnSports" data-transition="fade">Sports</a></li>
             <li><a href="#meetups" id="btnMeetups" data-transition="fade">Meet-Ups</a></li>
@@ -90,8 +91,6 @@
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
     </div>
 
-    <h2 align="middle">Sports</h2>
-
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
             <li><a href="#football" id="btnFootball" data-transition="fade">Football</a></li>
@@ -120,8 +119,6 @@
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
     </div>
 
-    <h2 align="middle">Meet-Ups</h2>
-
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
             <!--Meet-Ups will be inserted here-->
@@ -145,8 +142,6 @@
         <h1>Events</h1>
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
     </div>
-
-    <h2 align="middle">Events</h2>
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
@@ -179,8 +174,6 @@
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
     </div>
 
-    <h2 align="middle">News</h2>
-
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
             <!--News will be inserted here-->
@@ -194,9 +187,161 @@
 
 <!-------------------------------------------->
 
+<!-- The following HTML now features the SPORTS section of the mobile app. For the purpose of testing the features of
+adding events etc. we will have a default of roughly 4-5 sports. -->
+
 <!---------------------------------------------
--------------------News------------------------
+-------------------Football--------------------
 ---------------------------------------------->
+
+<div data-role="page" id="football">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Football</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <!-- Examples of what will be added! -->
+            <li>Team 1 vs Team 2 for 2pm Kick-Off, Monday @ The Pitch</li>
+            <li>Team 1 vs Team 3 for 2pm Kick-Off, Tuesday @ The Pitch</li>
+            <li>Team 2 vs Team 3 for 2pm Kick-Off, Wednesday @ The Pitch</li>
+            <li>Team 4 vs Team 5 for 2pm Kick-Off, Thursday @ The Pitch</li>
+            <li>Team 4 vs Team 6 for 2pm Kick-Off, Friday @ The Pitch</li>
+            <li>Team 5 vs Team 6 for 2pm Kick-Off, Saturday @ The Pitch</li>
+            <li>Team 1 vs Team 6 for 2pm Kick-Off, Sunday @ The Pitch</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Basketball------------------
+---------------------------------------------->
+
+<div data-role="page" id="basketball">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Basketball</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <!-- Examples of what will be added! -->
+            <li>Team 1 vs Team 2 for 2pm Play-Off, Monday @ The Ball Court</li>
+            <li>Team 1 vs Team 3 for 2pm Play-Off, Tuesday @ The Ball Court</li>
+            <li>Team 2 vs Team 3 for 2pm Play-Off, Wednesday @ The Ball Court</li>
+            <li>Team 4 vs Team 5 for 2pm Play-Off, Thursday @ The Ball Court</li>
+            <li>Team 4 vs Team 6 for 2pm Play-Off, Friday @ The Ball Court</li>
+            <li>Team 5 vs Team 6 for 2pm Play-Off, Saturday @ The Ball Court</li>
+            <li>Team 1 vs Team 6 for 2pm Play-Off, Sunday @ The Ball Court</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Athletics-------------------
+---------------------------------------------->
+
+<div data-role="page" id="athletics">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Athletics</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <!-- Examples of what will be added! -->
+            <li>100m Race at 10am, Monday @ The Running Track</li>
+            <li>200m Race at 10am, Tuesday @ The Running Track</li>
+            <li>300m Race at 10am, Wednesday @ The Running Track</li>
+            <li>400m Race at 10am, Thursday @ The Running Track</li>
+            <li>500m Race at 10am, Friday @ The Running Track</li>
+            <li>600m Race at 10am, Saturday @ The Running Track</li>
+            <li>700m Race at 10am, Sunday @ The Running Track</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Field Hockey----------------
+---------------------------------------------->
+
+<div data-role="page" id="hockey">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Field Hockey</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <!-- Examples of what will be added! -->
+            <li>Team 1 vs Team 2 for 2pm Play-Off, Monday @ Hockey Pitch</li>
+            <li>Team 1 vs Team 3 for 2pm Play-Off, Tuesday @ Hockey Pitch</li>
+            <li>Team 2 vs Team 3 for 2pm Play-Off, Wednesday @ Hockey Pitch</li>
+            <li>Team 4 vs Team 5 for 2pm Play-Off, Thursday @ Hockey Pitch</li>
+            <li>Team 4 vs Team 6 for 2pm Play-Off, Friday @ Hockey Pitch</li>
+            <li>Team 5 vs Team 6 for 2pm Play-Off, Saturday @ Hockey Pitch</li>
+            <li>Team 1 vs Team 6 for 2pm Play-Off, Sunday @ Hockey Pitch</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Tennis----------------------
+---------------------------------------------->
+
+<div data-role="page" id="tennis">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Tennis</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <!-- Examples of what will be added! -->
+            <li>Team 1 vs Team 2 for 2pm, Monday @ Tennis Court</li>
+            <li>Team 1 vs Team 3 for 2pm, Tuesday @ Tennis Court</li>
+            <li>Team 2 vs Team 3 for 2pm, Wednesday @ Tennis Court</li>
+            <li>Team 4 vs Team 5 for 2pm, Thursday @ Tennis Court</li>
+            <li>Team 4 vs Team 6 for 2pm, Friday @ Tennis Court</li>
+            <li>Team 5 vs Team 6 for 2pm, Saturday @ Tennis Court</li>
+            <li>Team 1 vs Team 6 for 2pm, Sunday @ Tennis Court</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
 
 </body>
 </html>
