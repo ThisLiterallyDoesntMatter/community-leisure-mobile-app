@@ -1,7 +1,3 @@
-/**
- * Created by B00291854 on 16/03/2017.
- */
-
 //For the Feed to receive local news, at the moment, the app will be default to the Glasgow area.
 
 $("#newsFeed").bind('click', function() {   //RSS Feed supplied from ENTER HERE
