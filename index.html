@@ -361,12 +361,12 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
         <ul data-role="listview" data-inset="true" data-theme="b">
             <form action="/action_page.php">
                 <li><label for="topic">Topic:</label></li>
-                <li><input type="text" name="subject" size="12" id="topic"/></li>
+                <li><input type="text" name="subject" size="12" placeholder="Enter topic..." id="topic"/></li>
 
                 <br>
 
-                <li><select name="category">
-                    <option selected="" value="default">(Please Select A Category)</option>
+                <li><select id="category">
+                    <option value="default">(Please Select A Category)</option>
                     <option value="vSport">Sports</option>
                     <option value="vMeetups">Meet-Ups</option>
                     <option value="vEvents">Events</option>
@@ -376,21 +376,22 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
                 <br>
 
                 <li><label for="activity">Activity:</label></li>
-                <li><input type="text" name="activity" size="12" id="activity"/></li>
+                <li><input type="text" name="activity" size="12" placeholder="Enter activity..." id="activity"/></li>
 
                 <li><label for="location">Location:</label></li>
-                <li><input type="text" name="location" size="12" id="location"/></li>
+                <li><input type="text" name="location" size="12" placeholder="Enter location..." id="location"/></li>
 
                 <li><label for="time">Time:</label></li>
-                <li><input type="text" name="time" size="12" id="time"/></li>
+                <li><input type="text" name="time" size="12" placeholder="Enter time..." id="time"/></li>
 
                 <li><label for="additionalInfo">Additional Information:</label></li>
-                <li><textarea name="additionalInfo" cols="20" rows="4" id="additionalInfo" placeholder="Max 250 characters"></textarea></li>
+                <li><textarea name="additionalInfo" cols="20" rows="4" maxlength="150" id="additionalInfo" placeholder="Max 150 characters"></textarea></li>
             </form>
         </ul>
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="delete" data-theme="a" id="clear" style="float: left;">Clear</a>
         <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a">Submit</a>
     </div>
 </div>
