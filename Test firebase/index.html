@@ -1,0 +1,69 @@
+  <!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+ <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+</head>
+<body>
+ <h1>Test Data-Store</h1>
+ <label for="name">Name:</label><input type="text" id="name"/><br/>
+ <label for="messages">Message:</label><br/>
+ <textarea id="messages" cols="60" rows="10"></textarea><br/>
+ <button id="post">Post Message</button><br/>
+ <ul id="messages"></ul>
+</body>
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDsWFgxHhimF-ixZTdafgAnt0V3ECINU_Q",
+    authDomain: "communityapp-a62a6.firebaseapp.com",
+    databaseURL: "https://communityapp-a62a6.firebaseio.com",
+    storageBucket: "communityapp-a62a6.appspot.com",
+    messagingSenderId: "611423504506"
+  };
+  firebase.initializeApp(config);
+</script>
+    
+    
+<script>
+    
+    var fb = new Firebase("https://communityapp-a62a6.firebaseio.com/"),
+ fbMessages = fb.child(“/messages”);
+ messages_area = document.getElementById("messages");
+if (fb) {
+ // This gets a reference to the 'location" node.
+ var fbMessages = fb.child("/messages");
+ // Now we can install event handlers for nodes added, changed and removed.
+ fbMessages.on('child_added', function(snapshot){
+ var data = snapshot.val();
+ console.dir({'added': data});
+ });
+}
+    
+function postMessage(name, message) {
+ fbMessages.push({
+ name: name,
+ message: message,
+ timestamp: Firebase.ServerValue.TIMESTAMP
+ });
+}
+    
+    document.getElementById('post').addEventListener('click', function(){
+ var nameElement = document.getElementById('name'),
+ messageElement = document.getElementById('message'),
+ name = nameElement.value,
+ message = messageElement.value;
+ if(name && message) {
+ postMessage(name, message);
+ }
+ m
+    
+    
+
+
+    
+</script>
+</html>
