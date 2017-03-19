@@ -102,7 +102,6 @@
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Sport</a>
     </div>
 </div>
 
@@ -215,7 +214,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
 
@@ -246,7 +245,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
 
@@ -277,7 +276,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
 
@@ -308,7 +307,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
 
@@ -339,9 +338,64 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
+
+<!-------------------------------------------->
+
+<!-- Now, the following code is going to show the HTML for adding an event for a selected category
+
+<!---------------------------------------------
+-----------------ADDING EVENT------------------
+---------------------------------------------->
+
+<div data-role="page" id="addEvent">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Add Event</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <form action="/action_page.php">
+                <li><label for="topic">Topic:</label></li>
+                <li><input type="text" name="subject" size="12" id="topic"/></li>
+
+                <br>
+
+                <li><select name="category">
+                    <option selected="" value="default">(Please Select A Category)</option>
+                    <option value="vSport">Sports</option>
+                    <option value="vMeetups">Meet-Ups</option>
+                    <option value="vEvents">Events</option>
+                    <option value="vNews">News</option>
+                </select></li>
+
+                <br>
+
+                <li><label for="activity">Activity:</label></li>
+                <li><input type="text" name="activity" size="12" id="activity"/></li>
+
+                <li><label for="location">Location:</label></li>
+                <li><input type="text" name="location" size="12" id="location"/></li>
+
+                <li><label for="time">Time:</label></li>
+                <li><input type="text" name="time" size="12" id="time"/></li>
+
+                <li><label for="additionalInfo">Additional Information:</label></li>
+                <li><textarea name="additionalInfo" cols="20" rows="4" id="additionalInfo" placeholder="Max 250 characters"></textarea></li>
+            </form>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a">Submit</a>
+    </div>
+</div>
+
+
 
 </body>
 </html>
