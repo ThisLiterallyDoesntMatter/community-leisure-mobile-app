@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta name="viewport" content="width-device-width, initial-scale=1"/>
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+</head>
+<body>
+    <h1>Test Data-Store</h1>
+    <label for="name">Name:</label><input type="text" id="name"/><br/>
+    <label for="message">Message:</label><br/>
+    <textarea id="message" cols="60" rows="10"></textarea><br/>
+    <button id="post">Post Message</button><br/>
+    <ul id="messages"></ul>
+</body>
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.2/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBtj7RK9kAz0d-kxziBY5TmokHuc-Hv-vQ",
+        authDomain: "community-leisure-mobile-app.firebaseapp.com",
+        databaseURL: "https://community-leisure-mobile-app.firebaseio.com",
+        storageBucket: "community-leisure-mobile-app.appspot.com",
+        messagingSenderId: "718224208663"
+    };
+    firebase.initializeApp(config);
+</script>
+
+<script>
+    var fb = new Firebase("https://community-leisure-mobile-app.firebaseio.com/"),
+        fbMessages = fb.child("/messages");
+        messages_area = document.getElementById("messages");
+
+    if (fb) {
+        //This gets a reference to the 'location' node.
+        var fbMessages = fb.child("/messages");
+        //Now we can install event handlers for nodes added, changed and removed.
+        fbMessages.on('child_added', function(snapshot){
+            var data = snapshot.val();
+            console.dir({'added': data});
+        });
+    }
+
+    function postMessage(name, message) {
+        fbMessages.push({
+            name: name,
+            message: message,
+            timestamp: Firebase.ServerValue.TIMESTAMP
+        });
+    }
+
+    document.getElementById('post').addEventListener('click', function() {
+        var nameElement = document.getElementById('name'),
+            messageElement = document.getElementById('message'),
+            name = nameElement.value,
+            message = messageElement.value;
+        if(name && message) {
+            postMessage(name, message);
+        }
+        messageElement.value="";
+    })
+</script>
+
+</html>
