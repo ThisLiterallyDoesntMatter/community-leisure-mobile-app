@@ -1,9 +1,3 @@
-/**
- * Created by Alan-PC on 20/03/2017.
- */
-
-
-
 // Initialize Firebase
 var config = {
         apiKey: "AIzaSyBtj7RK9kAz0d-kxziBY5TmokHuc-Hv-vQ",
@@ -15,7 +9,7 @@ var config = {
 firebase.initializeApp(config);
 
 
-var fb = new Firebase("https://community-leisure-mobile-app.firebaseio.com/"),
+/*var fb = new Firebase("https://community-leisure-mobile-app.firebaseio.com/"),
     fbMessages = fb.child("/messages");
 messages_area = document.getElementById("messages");
 
@@ -48,7 +42,8 @@ function showMessage(key, data){
 //COME BACK HERE TO APPROPRIATELY FORMAT THE OUTPUT
 function formatMessage(key, data){
     var li = document.createElement("li");
-    li.innerHTML = "<h1>" + data.topic + "</h1><p>" + data.category + data.activity + data.location + data.time + data.additionalInfo + "</p>" + "</li>";
+    li.innerHTML = "<h3>" + data.topic + "</h3><p>" + data.activity + "</p>";
+    //li.innerHTML = "<h1>" + data.topic + "</h1><p>" + data.category + data.activity + data.location + data.time + data.additionalInfo + "</p>" + "</li>";
     //li.innerHTML = "<h3>" + data.message + "</h3><p>Posted by:" + data.topic + "</p>";
     li.setAttribute("id", key);
     return li;
@@ -60,9 +55,9 @@ fbMessages.on('child_added', function (snapshot) {
     console.dir({'added': data});
     messages[key] = data;
     showMessage(key, data);
-});
+});*/
 
-document.getElementById('btnSubmit').addEventListener('click', function() {
+/*document.getElementById('btnSubmit').addEventListener('click', function() {
     var topicElement = document.getElementById('topic'),
         categoryElement = document.getElementById('category'),
         activityElement = document.getElementById('activity'),
@@ -79,4 +74,4 @@ document.getElementById('btnSubmit').addEventListener('click', function() {
         postMessage(topic, category, activity, location, time, additionalInfo);
     }
     categoryElement.value="";
-});
+});*/
