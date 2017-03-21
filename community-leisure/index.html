@@ -21,7 +21,7 @@
     <script src="JS/rss-reader.js"></script>
     <script src="JS/jgfeed.js"></script>
     <script src="JS/communityapp.js"></script>
-    <script src="JS/dataStore-firebase.js"></script>
+    <script src="JS/firebase-rtdatabase.js"></script>
     <script src="JS/subject_list.js"></script>
     <!----------------------------------------------->
 </head>
@@ -214,14 +214,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
-            <!-- Examples of what will be added! -->
-            <li>Team 1 vs Team 2 for 2pm Kick-Off, Monday @ The Pitch</li>
-            <li>Team 1 vs Team 3 for 2pm Kick-Off, Tuesday @ The Pitch</li>
-            <li>Team 2 vs Team 3 for 2pm Kick-Off, Wednesday @ The Pitch</li>
-            <li>Team 4 vs Team 5 for 2pm Kick-Off, Thursday @ The Pitch</li>
-            <li>Team 4 vs Team 6 for 2pm Kick-Off, Friday @ The Pitch</li>
-            <li>Team 5 vs Team 6 for 2pm Kick-Off, Saturday @ The Pitch</li>
-            <li>Team 1 vs Team 6 for 2pm Kick-Off, Sunday @ The Pitch</li>
+
+            <li id="messages"></li>
+
+            <!-- Examples of what will be added!
+            <li>Team 1 vs Team 2 for 2pm Kick-Off, Monday @ The Pitch</li> -->
         </ul>
     </div>
 
@@ -245,14 +242,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
+
+            <li id="basketballMessages"></li>
+
             <!-- Examples of what will be added! -->
             <li>Team 1 vs Team 2 for 2pm Play-Off, Monday @ The Ball Court</li>
-            <li>Team 1 vs Team 3 for 2pm Play-Off, Tuesday @ The Ball Court</li>
-            <li>Team 2 vs Team 3 for 2pm Play-Off, Wednesday @ The Ball Court</li>
-            <li>Team 4 vs Team 5 for 2pm Play-Off, Thursday @ The Ball Court</li>
-            <li>Team 4 vs Team 6 for 2pm Play-Off, Friday @ The Ball Court</li>
-            <li>Team 5 vs Team 6 for 2pm Play-Off, Saturday @ The Ball Court</li>
-            <li>Team 1 vs Team 6 for 2pm Play-Off, Sunday @ The Ball Court</li>
         </ul>
     </div>
 
@@ -276,14 +270,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
+
+            <li id="athleticsMessages"></li>
+
             <!-- Examples of what will be added! -->
             <li>100m Race at 10am, Monday @ The Running Track</li>
-            <li>200m Race at 10am, Tuesday @ The Running Track</li>
-            <li>300m Race at 10am, Wednesday @ The Running Track</li>
-            <li>400m Race at 10am, Thursday @ The Running Track</li>
-            <li>500m Race at 10am, Friday @ The Running Track</li>
-            <li>600m Race at 10am, Saturday @ The Running Track</li>
-            <li>700m Race at 10am, Sunday @ The Running Track</li>
         </ul>
     </div>
 
@@ -307,6 +298,9 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
+
+            <li id="hockeyMessages"></li>
+
             <!-- Examples of what will be added! -->
             <li>Team 1 vs Team 2 for 2pm Play-Off, Monday @ Hockey Pitch</li>
             <li>Team 1 vs Team 3 for 2pm Play-Off, Tuesday @ Hockey Pitch</li>
@@ -338,14 +332,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
+
+            <li id="tennisMessages"></li>
+
             <!-- Examples of what will be added! -->
             <li>Team 1 vs Team 2 for 2pm, Monday @ Tennis Court</li>
-            <li>Team 1 vs Team 3 for 2pm, Tuesday @ Tennis Court</li>
-            <li>Team 2 vs Team 3 for 2pm, Wednesday @ Tennis Court</li>
-            <li>Team 4 vs Team 5 for 2pm, Thursday @ Tennis Court</li>
-            <li>Team 4 vs Team 6 for 2pm, Friday @ Tennis Court</li>
-            <li>Team 5 vs Team 6 for 2pm, Saturday @ Tennis Court</li>
-            <li>Team 1 vs Team 6 for 2pm, Sunday @ Tennis Court</li>
         </ul>
     </div>
 
@@ -364,9 +355,9 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
 <div data-role="page" id="addEvent">
     <div data-role="header" data-add-back-btn="true">
-        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" id="eventBack">Back</a>
         <h1>Add Event</h1>
-        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a" id="eventHome">Home</a>
     </div>
 
     <div data-role="content" data-theme="a">
@@ -378,11 +369,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
                 <br>
 
                 <li><select id="category">
-                    <option value="default">(Please Select A Category)</option>
-                    <option value="vSport">Sports</option>
-                    <option value="vMeetups">Meet-Ups</option>
-                    <option value="vEvents">Events</option>
-                    <option value="vNews">News</option>
+                    <option value="">(Please Select A Category)</option>
+                    <option value="vSport" id="catSports">Sports</option>
+                    <option value="vMeetups" id="catMeetups">Meet-Ups</option>
+                    <option value="vEvents" id="catEvents">Events</option>
+                    <option value="vNews" id="catNews">News</option>
                 </select></li>
 
                 <br>
@@ -394,7 +385,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
                 <li><input type="text" name="location" size="12" placeholder="Enter location..." id="location"/></li>
 
                 <li><label for="time">Time:</label></li>
-                <li><input type="text" name="time" size="12" placeholder="Enter time..." id="time"/></li>
+                <li><input type="time" name="time" size="12" placeholder="Enter time in --:-- format..." id="time"/></li>
 
                 <li><label for="additionalInfo">Additional Information:</label></li>
                 <li><textarea name="additionalInfo" cols="20" rows="4" maxlength="150" id="additionalInfo" placeholder="Max 150 characters"></textarea></li>
@@ -404,11 +395,71 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
     <div data-role="footer" data-position="fixed" align="right">
         <a href="#" data-role="button" data-icon="delete" data-theme="a" id="clear" style="float: left;">Clear</a>
-        <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a" id="btnSubmit">Submit</a>
+        <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a" id="submit">Submit</a>
     </div>
 </div>
 
 
 
 </body>
+
+<!-- In order for the messages to actually appear appropriately throughout the app, we had to move the following code
+from the JavaScript file to the HTML as we were getting an error saying;
+                    "Cannot read property 'appendChild' of null"
+According to research on StackOverflow the cause of this is because the JavaScript is running before the actual HTML has
+finished loading, therefore we moved it in the following <script> to then stop this error. The solution to this problem
+can be found at: http://stackoverflow.com/questions/8670530/javascript-error-cannot-call-method-appendchild-of-null -->
+
+<script>
+
+    var fb = new Firebase("https://community-leisure-mobile-app.firebaseio.com/"),
+        //fbMessages = fb.child("/messages");
+    messages_area = document.getElementById("messages");
+
+    if (fb) {
+        //This gets a reference to the 'location' node.
+        var fbMessages = fb.child("/messages");
+        //Now we can install event handlers for nodes added, changed and removed.
+        fbMessages.on('child_added', function(snapshot){
+            var data = snapshot.val();
+            //console.dir({'added': data});
+        });
+    }
+
+    function postMessage(topic, category, activity, location, time, additionalInfo) {
+        fbMessages.push({
+            topic: topic,
+            category: category,
+            activity: activity,
+            location: location,
+            time: time,
+            additionalInfo: additionalInfo,
+            timestamp: Firebase.ServerValue.TIMESTAMP
+        });
+    }
+
+    function showMessage(key, data){
+        messages_area.appendChild(formatMessage(key, data));
+    }
+
+    //COME BACK HERE TO APPROPRIATELY FORMAT THE OUTPUT
+    function formatMessage(key, data){
+        var li = document.createElement("li");
+        li.innerHTML = "<p>" + data.topic + "</p><p>" + data.activity +  " at " + data.location + " at " + data.time + "." + " " + data.additionalInfo + "</p>";
+        //li.innerHTML = "<h1>" + data.topic + "</h1><p>" + data.category + data.activity + data.location + data.time + data.additionalInfo + "</p>" + "</li>";
+        //li.innerHTML = "<h3>" + data.message + "</h3><p>Posted by:" + data.topic + "</p>";
+        li.setAttribute("id", key);
+        return li;
+    }
+
+    fbMessages.on('child_added', function (snapshot) {
+        var data = snapshot.val(),
+            key = snapshot.key();
+        console.dir({'added': data});
+        messages[key] = data;
+        showMessage(key, data);
+    });
+
+</script>
+
 </html>
