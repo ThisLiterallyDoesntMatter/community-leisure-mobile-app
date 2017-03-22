@@ -208,7 +208,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 <div data-role="page" id="football">
     <div data-role="header" data-add-back-btn="true">
         <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
-        <h1 href="vfootball">Football</h1>
+        <h1>Football</h1>
         <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
     </div>
 
@@ -243,7 +243,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
 
-            <li id="Messages"></li>
+            <li id="basketballMessages"></li>
 
             <!-- Examples of what will be added! -->
             <li>Team 1 vs Team 2 for 2pm Play-Off, Monday @ The Ball Court</li>
@@ -369,21 +369,11 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
                 <br>
 
                 <li><select id="category">
-                 <option value="">(Please Select A Category)</option>                    
-                    <optgroup label="Sports">
-                        <option value="vFootball" id="catFootball">Football</option>
-                        <option value="vBasketball" id="catBasket">Basketball</option>
-                        <option value="vAthletics" id="catAthletics">Athletics</option>
-                        <option value="vFieldHockey" id="catFieldHockey">Field Hockey</option>
-                        <option value="vTennis" id="catTennis">Tennis</option>
-                    </optgroup>                 
-                    
+                    <option value="">(Please Select A Category)</option>
+                    <option value="vSport" id="catSports">Sports</option>
                     <option value="vMeetups" id="catMeetups">Meet-Ups</option>
                     <option value="vEvents" id="catEvents">Events</option>
-                    <option value="vNews" id="catNews">News</option>                      
-                        
-                        
-                        
+                    <option value="vNews" id="catNews">News</option>
                 </select></li>
 
                 <br>
@@ -455,19 +445,11 @@ can be found at: http://stackoverflow.com/questions/8670530/javascript-error-can
     //COME BACK HERE TO APPROPRIATELY FORMAT THE OUTPUT
     function formatMessage(key, data){
         var li = document.createElement("li");
-        //var currentPage == 
-        var locationnnn = document.getElementById("h1");
-        
-        
-        if(data.category ==  "vFootball"){
-                    li.innerHTML = "<p>" + data.topic +  "</p><p>" + data.activity + " at " + data.location + " at " + data.time + "." + " " + data.additionalInfo + "</p><br>";
+        li.innerHTML = "<p>" + data.topic + "</p><p>" + data.activity +  " at " + data.location + " at " + data.time + "." + " " + data.additionalInfo + "</p>";
         //li.innerHTML = "<h1>" + data.topic + "</h1><p>" + data.category + data.activity + data.location + data.time + data.additionalInfo + "</p>" + "</li>";
         //li.innerHTML = "<h3>" + data.message + "</h3><p>Posted by:" + data.topic + "</p>";
         li.setAttribute("id", key);
         return li;
-        }
-                
-
     }
 
     fbMessages.on('child_added', function (snapshot) {
