@@ -1,3 +1,8 @@
+/**
+ * Created by Alan-PC on 19/03/2017.
+ */
+
+
 //THIS WILL BE THE MAIN JAVASCRIPT FILE FOR THE APP
 
 /*function getListViewItems() {
