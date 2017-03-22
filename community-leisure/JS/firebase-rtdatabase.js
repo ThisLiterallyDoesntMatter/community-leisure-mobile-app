@@ -1,3 +1,9 @@
+/**
+ * Created by Alan-PC on 20/03/2017.
+ */
+
+
+
 // Initialize Firebase
 var config = {
         apiKey: "AIzaSyBtj7RK9kAz0d-kxziBY5TmokHuc-Hv-vQ",
