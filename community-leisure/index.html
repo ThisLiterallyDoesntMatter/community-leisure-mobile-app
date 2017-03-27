@@ -46,7 +46,7 @@
             <br>
             <input id="password" type="password" name="surname" value="">
             <br>
-            <li onclick="login_attempt()"><id="btnLogIn" data-transition="fade">Log In</a></li>
+            <li onclick="login_attempt()"><a id="btnLogIn" data-transition="fade">Log In</a></li>
         </ul>
     </div>
 </div>
@@ -134,12 +134,13 @@
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
-            <!--Meet-Ups will be inserted here-->
+            <li><a href="#dating" id="btnDating" data-transition="fade">Dating</a></li>
+            <li><a href="#interests" id="btnInterests" data-transition="fade">Interests</a></li>
         </ul>
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Meet-Up</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Meet-Up</a>
     </div>
 </div>
 
@@ -158,12 +159,13 @@
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
-            <!--Events will be inserted here-->
+            <li><a href="#holiday" id="btnHoliday" data-transition="fade">Holiday Events</a></li>
+            <li><a href="#concerts" id="btnConcerts" data-transition="fade">Concerts</a></li>
         </ul>
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
     </div>
 </div>
 
@@ -189,12 +191,13 @@ area themselves.-->
 
     <div data-role="content" data-theme="a">
         <ul data-role="listview" data-inset="true" data-theme="b">
-            <!--News will be inserted here-->
+            <li><a href="#celebrity" id="btnCelebrity" data-transition="fade">Celebrity</a></li>
+            <li><a href="#politics" id="btnPolitics" data-transition="fade">Politics</a></li>
         </ul>
     </div>
 
     <div data-role="footer" data-position="fixed" align="right">
-        <a href="#" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add News</a>
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add News</a>
     </div>
 </div>
 
@@ -323,6 +326,150 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
 
 <!-------------------------------------------->
 
+<!---------------------------------------------
+-------------------Dating----------------------
+---------------------------------------------->
+
+<div data-role="page" id="dating">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Dating</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="dating_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Interests-------------------
+---------------------------------------------->
+
+<div data-role="page" id="interests">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Interests</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="interests_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Holiday Events--------------
+---------------------------------------------->
+
+<div data-role="page" id="holiday">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Holiday Events</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="holiday_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Concerts--------------------
+---------------------------------------------->
+
+<div data-role="page" id="concerts">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Concerts</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="concerts_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Celebrity-------------------
+---------------------------------------------->
+
+<div data-role="page" id="celebrity">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Celebrity</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="celebrity_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
+<!---------------------------------------------
+-------------------Politics----------------------
+---------------------------------------------->
+
+<div data-role="page" id="politics">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a">Back</a>
+        <h1>Politics</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul id="politics_msg_board" data-role="listview" data-inset="true" data-theme="b">
+            <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#addEvent" data-role="button" data-icon="plus" data-direction="reverse" data-theme="a">Add New Event</a>
+    </div>
+</div>
+
+<!-------------------------------------------->
+
 <!-- Now, the following code is going to show the HTML for adding an event for a selected category
 
 <!---------------------------------------------
@@ -354,11 +501,20 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
                         <option value="vTennis" id="catTennis">Tennis</option>
                     </optgroup>
 
-                    <option value="vMeetups" id="catMeetups">Meet-Ups</option>
-                    <option value="vEvents" id="catEvents">Events</option>
-                    <option value="vNews" id="catNews">News</option>
+                    <optgroup label="Meet-Ups">
+                        <option value="vDating" id="catDating">Dating</option>
+                        <option value="vInterests" id="catInterests">Interests</option>
+                    </optgroup>
 
+                    <optgroup label="Events">
+                        <option value="vHoliday" id="catHoliday">Holiday Events</option>
+                        <option value="vConcerts" id="catConcerts">Concerts</option>
+                    </optgroup>
 
+                    <optgroup label="News">
+                        <option value="vCelebrity" id="catCelebrity">Celebrity</option>
+                        <option value="vPolitics" id="catPolitics">Politics</option>
+                    </optgroup>
 
                 </select></li>
 
