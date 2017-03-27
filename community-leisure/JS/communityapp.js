@@ -1,3 +1,8 @@
+/**
+ * Created by Muthar, Scott & Alan on 19/02/2017.
+ */
+
+
 //THIS WILL BE THE MAIN JAVASCRIPT FILE FOR THE APP
 
 //Any Global Variables
@@ -37,13 +42,19 @@ window.onload = function() {
 
     /*
         We want to gather that data from the database so that it will give us the ability to post to different sections
-        within the Sports category
+        within the categories
      */
     update_mesg_board("football");
     update_mesg_board("basketball");
     update_mesg_board("athletics");
     update_mesg_board("field_hockey");
     update_mesg_board("tennis");
+    update_mesg_board("dating");
+    update_mesg_board("interests");
+    update_mesg_board("holiday_events");
+    update_mesg_board("concerts");
+    update_mesg_board("celebrity");
+    update_mesg_board("politics");
 
     /*
         When the CLEAR button is pressed on the Add Entry page, it will reset all the current fields allowing the user
