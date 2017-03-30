@@ -385,7 +385,7 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     </div>
 
     <div data-role="content" data-theme="a">
-        <ul id="holiday_msg_board" data-role="listview" data-inset="true" data-theme="b">
+        <ul id="holiday_events_msg_board" data-role="listview" data-inset="true" data-theme="b">
             <li class="ui-li ui-li-static ui-btn-up-b ui-first-child">Message Board</li>
         </ul>
     </div>
@@ -537,6 +537,46 @@ adding events etc. we will have a default of roughly 4-5 sports. -->
     <div data-role="footer" data-position="fixed" align="right">
         <a href="#" data-role="button" data-icon="delete" data-theme="a" id="clear" style="float: left;" onClick="clear();">Clear</a>
         <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a" id="submit" onClick="submit();">Submit</a>
+    </div>
+</div>
+
+<!------------------------------------------------------------------------------------>
+
+<!---------------------------------------------
+-----------------EDIT EVENT--------------------
+---------------------------------------------->
+
+<div data-role="page" id="editEvent">
+    <div data-role="header" data-add-back-btn="true">
+        <a href="#" data-role="button" data-icon="back" data-rel="back" data-theme="a" id="eventBack">Back</a>
+        <h1>Edit Event</h1>
+        <a href="#home" data-role="button" data-icon="home" data-theme="a" id="eventHome">Home</a>
+    </div>
+
+    <div data-role="content" data-theme="a">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            <form action="/action_page.php">
+                <li><label for="topic">Topic:</label></li>
+                <li><input type="text" name="subject" size="12" placeholder="Enter topic..." id="edit_topic" /></li>
+
+                <li><label for="activity">Activity:</label></li>
+                <li><input type="text" name="activity" size="12" placeholder="Enter activity..." id="edit_activity" /></li>
+
+                <li><label for="location">Location:</label></li>
+                <li><input type="text" name="location" size="12" placeholder="Enter location..." id="edit_location" /></li>
+
+                <li><label for="time">Time:</label></li>
+                <li><input type="time" name="time" size="12" placeholder="Enter time in --:-- format..." id="edit_time" /></li>
+
+                <li><label for="additionalInfo">Additional Information:</label></li>
+                <li><textarea name="additionalInfo" cols="20" rows="4" maxlength="150" id="edit_additional_info" placeholder="Max 150 characters"></textarea></li>
+            </form>
+        </ul>
+    </div>
+
+    <div data-role="footer" data-position="fixed" align="right">
+        <a href="#" data-role="button" data-icon="delete" data-theme="a" style="float: left;" onClick="clear();">Clear</a>
+        <a href="#" data-role="button" data-icon="check" data-direction="reverse" data-theme="a" onClick="submit_edit();">Submit</a>
     </div>
 </div>
 
