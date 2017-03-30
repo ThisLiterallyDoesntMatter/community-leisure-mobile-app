@@ -18,9 +18,8 @@ var time;
 var additional_info;
 
 
-//$(document).ready(function() {
 window.onload = function() {
-    // Initialize Firebase
+    // Initialize Firebase firebase.google.com
     var config = {
         apiKey: "AIzaSyBtj7RK9kAz0d-kxziBY5TmokHuc-Hv-vQ",
         authDomain: "community-leisure-mobile-app.firebaseapp.com",
@@ -56,6 +55,13 @@ window.onload = function() {
     update_mesg_board("celebrity");
     update_mesg_board("politics");
 
+    /*messages_node.on('child_removed', snap => {
+        const liToRemove = document.getElementById(snap.key);
+        liToRemove.remove();
+    });*/
+
+    $("#btn")
+
     /*
         When the CLEAR button is pressed on the Add Entry page, it will reset all the current fields allowing the user
         to start from scratch!
@@ -63,8 +69,6 @@ window.onload = function() {
     $("#clear").on("click", function() {
         clear();
     });
-
-
 
     /*  HOME and BACK button on Add Event page
         When either the Home and Back button is pressed within the Add Event page, the fields on the page will be cleared/
@@ -76,6 +80,13 @@ window.onload = function() {
     $("#eventBack").on("click", function() {
         clear();
     });
+
+    const dbRefObject = firebase.database().ref().child('messages');
+    const dbRefList = dbRefObject.child('sports');
+
+    dbRefList.on('child_removed', function() {
+        deleteComment();
+    })
 };
 
 function submit () {
@@ -109,7 +120,7 @@ function submit () {
     // Convert string to lower case and spaces to underscores for consistency
     var category_value = category.options[category.selectedIndex].text.toLowerCase().replace(/ /g, "_");
 
-    // Get a reference to the relavtive place we want to submit a record to e.g. /messages/football/
+    // Get a reference to the relative place we want to submit a record to e.g. /messages/football/
     var category_node = messages_node.child(category_value);
 
     var eventData = {
@@ -139,6 +150,7 @@ function clear() {
      Additional Information ✓
      */
 
+    //Resets values to null
     $("#topic").val("");
     $("#category").selectedIndex = 0;
     $("#activity").val("");
@@ -147,7 +159,8 @@ function clear() {
     $("#additionalInfo").val("");
 }
 
-function add_to_msg_board(msg_board_name, msg) {
+function add_to_msg_board(msg_board_name, msg, category, key) {
+    // Basically this function adds the event being posted to the message board and in the appropriate layout as displayed below.
 
     var msg_board = document.getElementById(msg_board_name);
 
@@ -157,9 +170,15 @@ function add_to_msg_board(msg_board_name, msg) {
     var p_tag_start = "<p class='ui-li-desc'>";
     var p_tag_end = "</p>";
 
+    var button_delete = "<div class='delete-button' onclick='delete_msg(\"" + category + "\", \"" + key + "\", this);'>Delete Post</div>";
+
+    /*var button_tag_start ="<button href='#' type='button' id='btnRemove'>";
+    var button_tag_end ="</button>";*/
+
     var li = document.createElement("li");
     // Makes the this li element rounded on the bottom
     li.className = "ui-li ui-li-static ui-btn-up-b ui-last-child";
+    li.innerHTML += button_delete;
     li.innerHTML += h_tag_start + "Topic" + h_tag_end + p_tag_start + msg.topic + p_tag_end + h_tag_start + "Activity" + h_tag_end + p_tag_start + msg.activity + p_tag_end
                 + h_tag_start + "Location" + h_tag_end + p_tag_start + msg.location + p_tag_end + h_tag_start + "Time" + h_tag_end + p_tag_start + msg.time + p_tag_end
                 + h_tag_start + "Additional Info" + h_tag_end + p_tag_start + msg.additionalInfo + p_tag_end;
@@ -179,6 +198,22 @@ function update_mesg_board(board_name) {
             add_to_msg_board(board_name + "_msg_board", childSnapshot.val());
         });
     });
+}
+
+function delete_msg(category_name, msg_name, button) {
+    //First of all, when the delete button is pressed, we want to remove that post from the mobile app AND from Firebase
+
+    //similar to how we done the update I think
+    messages_node.child(category_name + "/" + msg_name).remove(); //this should remove the post from Firebase
+
+    var msg = button.parentElement;
+    var msg_board = msg.parentElement;
+
+    msg_board.removeChild(msg);
+    msg_board.lastChild.className = "ui-li ui-li-static ui-btn-up-b";
+    //msg_board.lastElementChild.className = "ui-li ui-li-static ui-btn-up-b"; // wrong state used not lastElementChild...
+
+    //Going to go back to the add_msg_board, to help further implement
 }
 
 /*
