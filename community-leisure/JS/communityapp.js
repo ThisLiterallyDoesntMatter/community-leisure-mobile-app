@@ -205,16 +205,16 @@ function update_mesg_board(board_name) {
     messages_node.child(board_name).once('value').then(function(snapshot) {
         // For each child record add it to the board as list item '<il>'
         snapshot.forEach(function(childSnapshot) {
-            add_to_msg_board(board_name + "_msg_board", childSnapshot.val());
+            add_to_msg_board(board_name + "_msg_board", childSnapshot.key, childSnapshot.val());
         });
     });
 }
 
-function delete_msg(category_name, msg_name, button) {
+function delete_msg(category_id, msg_name, button) {
     //First of all, when the delete button is pressed, we want to remove that post from the mobile app AND from Firebase
 
     //similar to how we done the update I think
-    messages_node.child(category_name + "/" + msg_name).remove(); //this should remove the post from Firebase
+    messages_node.child(category_id + "/" + msg_name).remove(); //this should remove the post from Firebase
 
     var msg = button.parentElement;
     var msg_board = msg.parentElement;
@@ -226,9 +226,9 @@ function delete_msg(category_name, msg_name, button) {
     //Going to go back to the add_msg_board, to help further implement
 }
 
-function edit_msg(category_name, msg_name, button) {
+function edit_msg(category, msg_name, button) {
 
-    edit.category_name = category_name;
+    edit.category = category;
     edit.msg_name = msg_name;
 
     //if we get the all the elements that are displayed within the <p> we can then individually split those elements up giving them separate indexes
@@ -298,8 +298,12 @@ function submit_edit() {
         edit.additional_info.innerHTML = edit_additional_info.value;
     }
 
-    category_node = messages_node.child(edit.category);
-    category_node.child(edit.msg.msg_name).update(update_edit);
+    /*category_node = messages_node.child(edit.category);
+    category_node.child(edit.msg_name).update(update_edit);
+    category_node.push(update_edit);*/
+
+    var category_node = messages_node.child(edit.category);
+    category_node.child(edit.msg_name).update(update_edit);
 
     alert("Message Board has been edited!");
 }
