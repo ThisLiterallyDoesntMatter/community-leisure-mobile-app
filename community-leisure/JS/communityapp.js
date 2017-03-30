@@ -9,13 +9,23 @@
 var database;
 var messages_node;
 
-//Elements
+//Elements for ADDING
 var topic;
 var category;
 var activity;
 var locat;
 var time;
 var additional_info;
+
+//Elements for EDITING
+var edit_topic;
+var edit_activity;
+var edit_location;
+var edit_time;
+var edit_additional_info;
+
+var edit = {};
+var update_edit = {};
 
 
 window.onload = function() {
@@ -39,6 +49,14 @@ window.onload = function() {
     time = document.getElementById('time');
     additional_info = document.getElementById('additionalInfo');
 
+    //Referring to the HTML to EDIT elements, similar to how it's done above for adding
+    //Not going to allow the user to edit the category
+    edit_topic = document.getElementById('edit_topic');
+    edit_activity = document.getElementById('edit_activity');
+    edit_location = document.getElementById('edit_location');
+    edit_time = document.getElementById('edit_time');
+    edit_additional_info = document.getElementById('edit_additional_info');
+
     /*
         We want to gather that data from the database so that it will give us the ability to post to different sections
         within the categories
@@ -54,13 +72,6 @@ window.onload = function() {
     update_mesg_board("concerts");
     update_mesg_board("celebrity");
     update_mesg_board("politics");
-
-    /*messages_node.on('child_removed', snap => {
-        const liToRemove = document.getElementById(snap.key);
-        liToRemove.remove();
-    });*/
-
-    $("#btn")
 
     /*
         When the CLEAR button is pressed on the Add Entry page, it will reset all the current fields allowing the user
@@ -80,18 +91,16 @@ window.onload = function() {
     $("#eventBack").on("click", function() {
         clear();
     });
-
-    const dbRefObject = firebase.database().ref().child('messages');
-    const dbRefList = dbRefObject.child('sports');
-
-    dbRefList.on('child_removed', function() {
-        deleteComment();
-    })
 };
 
 function submit () {
     //Pre-cautions for the user, they must enter a certain value in the fields/ select form to continue!
     //In terms of the Additional Information, felt it was appropriate not to add one as the user already has a character limit set
+
+    if (topic.value.length >= 1) {
+        alert("Event has been submitted to appropriate category!");
+    }
+
 
     if (topic.value.length == 0) {
         alert("Enter a Topic.");
@@ -164,6 +173,7 @@ function add_to_msg_board(msg_board_name, msg, category, key) {
 
     var msg_board = document.getElementById(msg_board_name);
 
+    //Using the header, paragraph and the button this makes it much more efficient when wanting to display the data so it isn't cluttered
     var h_tag_start = "<h2 class='ui-li-heading'>";
     var h_tag_end = "</h2>";
 
@@ -172,13 +182,13 @@ function add_to_msg_board(msg_board_name, msg, category, key) {
 
     var button_delete = "<div class='delete-button' onclick='delete_msg(\"" + category + "\", \"" + key + "\", this);'>Delete Post</div>";
 
-    /*var button_tag_start ="<button href='#' type='button' id='btnRemove'>";
-    var button_tag_end ="</button>";*/
+    var button_edit = "<div class='edit-button' onclick='edit_msg(\"" + category + "\", \"" + key + "\", this);'>Edit Post</div>";
 
     var li = document.createElement("li");
     // Makes the this li element rounded on the bottom
     li.className = "ui-li ui-li-static ui-btn-up-b ui-last-child";
     li.innerHTML += button_delete;
+    li.innerHTML += button_edit;
     li.innerHTML += h_tag_start + "Topic" + h_tag_end + p_tag_start + msg.topic + p_tag_end + h_tag_start + "Activity" + h_tag_end + p_tag_start + msg.activity + p_tag_end
                 + h_tag_start + "Location" + h_tag_end + p_tag_start + msg.location + p_tag_end + h_tag_start + "Time" + h_tag_end + p_tag_start + msg.time + p_tag_end
                 + h_tag_start + "Additional Info" + h_tag_end + p_tag_start + msg.additionalInfo + p_tag_end;
@@ -214,6 +224,84 @@ function delete_msg(category_name, msg_name, button) {
     //msg_board.lastElementChild.className = "ui-li ui-li-static ui-btn-up-b"; // wrong state used not lastElementChild...
 
     //Going to go back to the add_msg_board, to help further implement
+}
+
+function edit_msg(category_name, msg_name, button) {
+
+    edit.category_name = category_name;
+    edit.msg_name = msg_name;
+
+    //if we get the all the elements that are displayed within the <p> we can then individually split those elements up giving them separate indexes
+    var msg_elements = button.parentElement.getElementsByTagName("p");
+
+    edit.topic = msg_elements[0];
+    edit.activity = msg_elements[1];
+    edit.location = msg_elements[2];
+    edit.time = msg_elements[3];
+    edit.additional_info = msg_elements[4];
+
+    location.href = "#editEvent";
+}
+
+/*
+    For when the user wants to re-submit an edit they have made, it's obviously going to be different to the way the
+    original submit() works because we want it to replace. The following code be quick repetitive but it works as it should.
+ */
+function submit_edit() {
+    //Same idea as before, first we want to call the precautions for the user so that they aren't leaving any fields blank
+    if (edit_topic.value.length == 0) {
+        alert("Enter a Topic.");
+    }
+
+    if (edit_topic.value.length >= 1) {
+        alert("Event has been edited!");
+    }
+
+    if (edit_activity.value.length == 0) {
+        alert("Enter an Activity.");
+        return;
+    }
+
+    if (edit_location.value.length == 0) {
+        alert("Enter a Location.");
+        return;
+    }
+
+    if (edit_time.value.length != 5) { //The reason this is 'not equal to 5'; when using the type="time" it uses 5 characters
+        alert("Enter the Time in appropriate format (HH:MM)");
+        return;
+    }
+
+    //Now we want to actually update that edit appropriately
+    if (edit_topic.value != edit.topic.innerHTML) {
+        update_edit.topic = edit_topic.value;
+        edit.topic.innerHTML = edit_topic.value;
+    }
+
+    if (edit_activity.value != edit.activity.innerHTML) {
+        update_edit.activity = edit_activity.value;
+        edit.activity.innerHTML = edit_activity.value;
+    }
+
+    if (edit_location.value != edit.location.innerHTML) {
+        update_edit.location = edit_location.value;
+        edit.location.innerHTML = edit_location.value;
+    }
+
+    if (edit_time.value != edit.time.innerHTML) {
+        update_edit.time = edit_time.value;
+        edit.time.innerHTML = edit_time.value;
+    }
+
+    if (edit_additional_info.value != edit.additional_info.innerHTML) {
+        update_edit.additional_info = edit_additional_info.value;
+        edit.additional_info.innerHTML = edit_additional_info.value;
+    }
+
+    category_node = messages_node.child(edit.category);
+    category_node.child(edit.msg.msg_name).update(update_edit);
+
+    alert("Message Board has been edited!");
 }
 
 /*
